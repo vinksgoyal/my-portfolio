@@ -1,43 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+  <!-- ═══════════════════════════════════════════
+       PRIMARY SEO
+  ═══════════════════════════════════════════ -->
+  <title>Divyansh Goyal (vinksgoyal) — Full Stack Engineer & Founder of Zinux Platforms</title>
+  <meta name="description" content="Divyansh Goyal, known online as vinksgoyal and Vinks Goyal, is a full stack engineer and founder of Zinux Platforms from Amritsar, India. Building websites, apps, and software products." />
+  <meta name="author" content="Divyansh Goyal" />
+  <meta name="keywords" content="Divyansh Goyal, vinksgoyal, Vinks Goyal, Zinux Platforms, full stack developer, web developer India, Amritsar developer, zinux.dev, divyanshgoyal.me, divyanshgoyal.dev" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="theme-color" content="#0a0a0a" />
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<link rel="me" href="https://www.wikidata.org/wiki/Q139591573">
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <!-- Canonical -->
+  <link rel="canonical" href="https://divyanshgoyal.me" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.png" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <!-- ═══════════════════════════════════════════
+       OPEN GRAPH (Facebook, LinkedIn, WhatsApp, Discord)
+  ═══════════════════════════════════════════ -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://divyanshgoyal.me" />
+  <meta property="og:site_name" content="Divyansh Goyal" />
+  <meta property="og:title" content="Divyansh Goyal (vinksgoyal) — Full Stack Engineer & Founder" />
+  <meta property="og:description" content="Full stack engineer and founder of Zinux Platforms from Amritsar, India. Known online as vinksgoyal and Vinks Goyal." />
+  <meta property="og:image" content="https://divyanshgoyal.dev/profile.jpg" />
+  <meta property="og:image:secure_url" content="https://divyanshgoyal.dev/profile.jpg" />
+  <meta property="og:image:alt" content="Divyansh Goyal — vinksgoyal" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="profile:first_name" content="Divyansh" />
+  <meta property="profile:last_name" content="Goyal" />
+  <meta property="profile:username" content="vinksgoyal" />
+
+  <!-- ═══════════════════════════════════════════
+       TWITTER / X CARD
+  ═══════════════════════════════════════════ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@vinksgoyal" />
+  <meta name="twitter:creator" content="@vinksgoyal" />
+  <meta name="twitter:title" content="Divyansh Goyal (vinksgoyal) — Full Stack Engineer & Founder" />
+  <meta name="twitter:description" content="Full stack engineer and founder of Zinux Platforms from Amritsar, India." />
+  <meta name="twitter:image" content="https://divyanshgoyal.dev/profile.jpg" />
+  <meta name="twitter:image:alt" content="Divyansh Goyal — vinksgoyal" />
+
+  <!-- ═══════════════════════════════════════════
+       ADDITIONAL PLATFORM TAGS
+  ═══════════════════════════════════════════ -->
+  <!-- LinkedIn -->
+  <meta property="og:image" content="https://divyanshgoyal.dev/profile.jpg" />
+
+  <!-- Threads / Instagram (uses OG tags, already covered) -->
+
+  <!-- Bluesky (uses OG tags, already covered) -->
+
+  <!-- YouTube -->
+  <meta itemprop="name" content="Divyansh Goyal — vinksgoyal" />
+  <meta itemprop="description" content="Full stack engineer and founder of Zinux Platforms. Known as vinksgoyal." />
+  <meta itemprop="image" content="https://divyanshgoyal.dev/profile.jpg" />
+
+  <!-- ═══════════════════════════════════════════
+       GOOGLE FONTS
+  ═══════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- ═══════════════════════════════════════════
+       GOOGLE ANALYTICS
+  ═══════════════════════════════════════════ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2N5W1S30C3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-2N5W1S30C3', {
+      page_title: 'Divyansh Goyal — vinksgoyal',
+      page_location: 'https://divyanshgoyal.me'
+    });
+  </script>
+
+  <!-- ═══════════════════════════════════════════
+       JSON-LD — PERSON
+  ═══════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://divyanshgoyal.me/#person",
+    "name": "Divyansh Goyal",
+    "alternateName": ["vinksgoyal", "Vinks Goyal", "dvyshgyl"],
+    "url": "https://divyanshgoyal.me",
+    "image": [
+      "https://divyanshgoyal.dev/profile.jpg",
+      "https://divyanshgoyal.dev/divyansh.jpg"
+    ],
+    "description": "Full stack engineer and founder of Zinux Platforms from Amritsar, India. Known online as vinksgoyal and Vinks Goyal.",
+    "jobTitle": "Full Stack Engineer & Founder",
+    "nationality": "Indian",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Amritsar",
+      "addressRegion": "Punjab",
+      "addressCountry": "IN"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Zinux Platforms",
+      "url": "https://zinux.dev",
+      "founder": {
+        "@type": "Person",
+        "name": "Divyansh Goyal",
+        "alternateName": ["vinksgoyal", "Vinks Goyal"]
+      }
+    },
+    "sameAs": [
+      "https://divyanshgoyal.dev",
+      "https://zinux.dev",
+      "https://github.com/vinksgoyal",
+      "https://linkedin.com/in/vinksgoyal",
+      "https://twitter.com/vinksgoyal",
+      "https://x.com/vinksgoyal",
+      "https://instagram.com/vinksgoyal",
+      "https://threads.net/@vinksgoyal",
+      "https://youtube.com/@vinksgoyal",
+      "https://bsky.app/profile/divyanshgoyal.me",
+      "https://leetcode.com/d1vyanshgoyal"
+    ]
+  }
+  </script>
+
+  <!-- ═══════════════════════════════════════════
+       JSON-LD — WEBSITE
+  ═══════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://divyanshgoyal.me/#website",
+    "name": "Divyansh Goyal",
+    "alternateName": "vinksgoyal",
+    "url": "https://divyanshgoyal.me",
+    "description": "Personal portfolio of Divyansh Goyal (vinksgoyal) — full stack engineer and founder of Zinux Platforms.",
+    "author": {
+      "@id": "https://divyanshgoyal.me/#person"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://divyanshgoyal.me/blog?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- ═══════════════════════════════════════════
+       JSON-LD — ORGANIZATION (Zinux Platforms)
+  ═══════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://zinux.dev/#organization",
+    "name": "Zinux Platforms",
+    "url": "https://zinux.dev",
+    "description": "Web development agency founded by Divyansh Goyal (vinksgoyal / Vinks Goyal), building websites and software products for local businesses.",
+    "founder": {
+      "@type": "Person",
+      "name": "Divyansh Goyal",
+      "alternateName": ["vinksgoyal", "Vinks Goyal"],
+      "url": "https://divyanshgoyal.me"
+    },
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Amritsar, Punjab, India"
+    },
+    "sameAs": [
+      "https://github.com/vinksgoyal",
+      "https://instagram.com/vinksgoyal",
+      "https://linkedin.com/in/vinksgoyal"
+    ]
+  }
+  </script>
+
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
 </html>
