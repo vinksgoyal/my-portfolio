@@ -1,20 +1,36 @@
-import React, { useState, useEffect } from 'react';
+// src/App.js
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
-import Projects from './pages/Projects';
-import Resume from './pages/Resume';
-import About from './pages/About';
-import Admin from './pages/Admin';
 import './App.css';
+
+// Lazy load pages for better performance
+const Home = lazy(() => import('./pages/Home'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
+const Projects = lazy(() => import('./pages/Projects'));
+const Resume = lazy(() => import('./pages/Resume'));
+const About = lazy(() => import('./pages/About'));
+const Admin = lazy(() => import('./pages/Admin'));
+
+// Loading component
+const PageLoader = () => (
+  <div style={{ 
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    minHeight: '50vh',
+    color: 'var(--muted)',
+    fontSize: '1rem'
+  }}>
+    Loading...
+  </div>
+);
 
 const getSavedThemeOrDefault = () => {
   const saved = localStorage.getItem('portfolio-theme');
   if (saved === 'light' || saved === 'dark' || saved === 'system') return saved;
-  // Always default to dark, for all devices
   return 'dark';
 };
 
@@ -23,6 +39,9 @@ const App = () => {
   const [animateBrand, setAnimateBrand] = useState(false);
   const [mounted, setMounted] = useState(false);
   const location = useLocation();
+
+  // Check if current route is admin
+  const isAdminRoute = location.pathname === '/admin' || location.pathname.startsWith('/admin');
 
   // Theme
   useEffect(() => {
@@ -66,19 +85,25 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header animateBrand={animateBrand} />
+      {/* Only show Header if not on admin route */}
+      {!isAdminRoute && <Header animateBrand={animateBrand} />}
+      
       <main>
-        <Routes>
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/" element={<Home mounted={mounted} />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/" element={<Home mounted={mounted} />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Suspense>
       </main>
-      <Footer theme={theme} setTheme={setTheme} />
+      
+      {/* Only show Footer if not on admin route */}
+      {!isAdminRoute && <Footer theme={theme} setTheme={setTheme} />}
     </div>
   );
 };

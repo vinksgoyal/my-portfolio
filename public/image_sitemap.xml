@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://divyanshgoyal.me/</loc>
+    <loc>https://vinksgoyal.me/</loc>
     <image:image>
-      <image:loc>https://divyanshgoyal.dev/profile.jpg</image:loc>
-      <image:title>Divyansh Goyal - Full Stack Engineer</image:title>
-      <image:license>https://divyanshgoyal.me/license</image:license>
+      <image:loc>https://vinksgoyal.me/profile.jpg</image:loc>
+      <image:title>Vinks Goyal - Full Stack Engineer</image:title>
+      <image:license>https://vinksgoyal.me/license</image:license>
     </image:image>
     <image:image>
-      <image:loc>https://divyanshgoyal.dev/divyansh.jpg</image:loc>
-      <image:title>Divyansh Goyal Work Photo</image:title>
+      <image:loc>https://vinksgoyal.me/vinks.jpg</image:loc>
+      <image:title>Vinks Goyal pic's</image:title>
     </image:image>
   </url>
 </urlset>

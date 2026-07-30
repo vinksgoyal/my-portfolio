@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://divyanshgoyal.me/sitemap.xml
-
+Sitemap: https://www.vinksgoyal.me/sitemap.xml

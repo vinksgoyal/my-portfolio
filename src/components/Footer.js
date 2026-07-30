@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Footer = ({ theme, setTheme }) => {
   return (
@@ -12,14 +11,20 @@ const Footer = ({ theme, setTheme }) => {
             Feel free to reach out if you're looking for a developer, have a question, or just want to connect.
           </p>
           <div className="contact-links">
-            <a href="mailto:dvyshgyl@gmail.com" className="contact-email">
+            <a href="mailto:vinksgoyal@gmail.com" className="contact-email">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <rect x="2" y="4" width="20" height="16" rx="2" />
                 <path d="m22 7-10 7L2 7" />
               </svg>
-              dvyshgyl@gmail.com
+              vinksgoyal@gmail.com
             </a>
-            <Link to="/resume" className="contact-resume">
+            {/* Swapped Link for a standard anchor tag to force a new tab */}
+            <a 
+              href="/Divyansh's_Resume.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="contact-resume"
+            >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                 <polyline points="14 2 14 8 20 8" />
@@ -27,7 +32,7 @@ const Footer = ({ theme, setTheme }) => {
                 <line x1="16" y1="17" x2="8" y2="17" />
               </svg>
               View Resume →
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -35,7 +40,7 @@ const Footer = ({ theme, setTheme }) => {
       {/* Footer bar */}
       <footer className="footer">
         <div className="container footer-inner">
-          <span className="footer-copy">© {new Date().getFullYear()} DivyanshG.</span>
+          <span className="footer-copy">© {new Date().getFullYear()} VinksG.</span>
           {setTheme && (
             <div className="footer-themes">
               <button className={`theme-btn${theme === 'light' ? ' active' : ''}`} onClick={() => setTheme('light')} aria-label="Light mode">

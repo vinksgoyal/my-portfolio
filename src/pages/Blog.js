@@ -6,7 +6,6 @@ import { supabase } from '../lib/supabase';
 
 const Blog = () => {
   const [writings, setWritings] = useState([]);
-  const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,7 +13,7 @@ const Blog = () => {
       setLoading(true);
       const { data, error } = await supabase
         .from('writings')
-        .select('id, title, slug, date')
+        .select('id, title, slug, date, content')
         .order('created_at', { ascending: false });
       if (!error && data) setWritings(data);
       else console.error(error);
@@ -23,42 +22,47 @@ const Blog = () => {
     fetchWritings();
   }, []);
 
-  const filtered = writings.filter(w =>
-    w.title.toLowerCase().includes(search.toLowerCase())
-  );
-
   return (
     <>
       <Helmet>
-        <title>Blog | Divyansh Goyal — Full Stack Engineer</title>
+        <title>Blog — Vinks Goyal</title>
         <meta name="description" content="Thoughts on coding, design, and building things that matter." />
+        <link rel="canonical" href="https://divyanshgoyal.me/blog" />
       </Helmet>
 
       <div className="blog-page">
         <div className="container">
           <div className="blog-header">
             <h1>Latest writings</h1>
-            <input
-              type="text"
-              placeholder="Search articles..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              className="blog-search"
-            />
           </div>
 
           {loading ? (
             <p className="no-results">Loading posts...</p>
           ) : (
             <div className="posts-list">
-              {filtered.map(post => (
+              {writings.map(post => (
                 <Link key={post.id} to={`/blog/${post.slug}`} className="post-item">
-                  <span className="post-title">{post.title}</span>
+                  <div>
+                    <span className="post-title">{post.title}</span>
+                    {post.content && (
+                      <p className="post-excerpt" style={{ 
+                        color: 'var(--muted)', 
+                        fontSize: '0.85rem', 
+                        marginTop: '0.25rem',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden'
+                      }}>
+                        {post.content.substring(0, 150)}...
+                      </p>
+                    )}
+                  </div>
                   <span className="post-date">{post.date}</span>
                 </Link>
               ))}
-              {filtered.length === 0 && (
-                <p className="no-results">No matching articles.</p>
+              {writings.length === 0 && (
+                <p className="no-results">No writings yet.</p>
               )}
             </div>
           )}

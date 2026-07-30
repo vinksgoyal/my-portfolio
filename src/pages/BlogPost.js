@@ -4,13 +4,20 @@ import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { supabase } from '../lib/supabase';
 
-// Simple inline markdown parser
 const parseInline = (text) => {
-  // Bold: **text**
+  if (!text) return text;
+  
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    if (part.startsWith('*') && part.endsWith('*') && !part.startsWith('**')) {
+      return <em key={i}>{part.slice(1, -1)}</em>;
+    }
+    const linkMatch = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
+    if (linkMatch) {
+      return <a key={i} href={linkMatch[2]} target="_blank" rel="noopener noreferrer">{linkMatch[1]}</a>;
     }
     return part;
   });
@@ -25,20 +32,17 @@ const renderContent = (content) => {
   while (i < lines.length) {
     const line = lines[i];
 
-    // Skip empty lines
     if (line.trim() === '') {
       i++;
       continue;
     }
 
-    // Horizontal rule: ---
     if (line.trim() === '---') {
       elements.push(<hr key={i} className="post-divider" />);
       i++;
       continue;
     }
 
-    // Sub-heading: **Heading** on its own line (entire line is bold)
     if (/^\*\*[^*]+\*\*$/.test(line.trim())) {
       elements.push(
         <h2 key={i} className="post-subheading">
@@ -49,7 +53,6 @@ const renderContent = (content) => {
       continue;
     }
 
-    // Regular paragraph
     elements.push(
       <p key={i} className="post-paragraph">
         {parseInline(line)}
@@ -93,7 +96,7 @@ const BlogPost = () => {
     return (
       <div className="container" style={{ padding: '3rem 0' }}>
         <p>Post not found.</p>
-        <Link to="/blog">← Back to blog</Link>
+        <Link to="/blog">← Back</Link>
       </div>
     );
   }
@@ -101,31 +104,28 @@ const BlogPost = () => {
   return (
     <>
       <Helmet>
-        <title>{post.title} | Divyansh Goyal</title>
-        <meta name="description" content={post.content?.substring(0, 160)} />
+        <title>{post.title} — Vinks Goyal</title>
+        <meta name="description" content={post.content?.substring(0, 160) || post.title} />
+        <link rel="canonical" href={`https://divyanshgoyal.me/blog/${post.slug}`} />
       </Helmet>
 
       <div className="blog-post-page">
         <div className="blog-post-container">
 
-          {/* Back link */}
-          <Link to="/blog" className="back-link">← Back to blog</Link>
+          <Link to="/blog" className="back-link">← Back</Link>
 
-          {/* Title */}
           <h1 className="post-title">{post.title}</h1>
 
-          {/* Date */}
-          <p className="post-meta">{post.date}</p>
+          <div className="post-meta">
+            <span>{post.date}</span>
+          </div>
 
-          {/* Divider under meta */}
           <hr className="post-divider post-divider--top" />
 
-          {/* Content */}
           <div className="post-body">
             {renderContent(post.content)}
           </div>
 
-          {/* Bottom nav */}
           <div className="post-footer">
             <Link to="/blog" className="back-link">← All writings</Link>
           </div>
@@ -208,6 +208,12 @@ const BlogPost = () => {
         .post-body strong {
           font-weight: 650;
           color: var(--fg);
+        }
+
+        .post-body a {
+          color: var(--fg);
+          text-decoration: underline;
+          text-underline-offset: 2px;
         }
 
         .post-footer {
